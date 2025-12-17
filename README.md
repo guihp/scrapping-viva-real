@@ -32,10 +32,12 @@ Este projeto está preparado para deploy no Coolify. Siga os passos:
    - Selecione a branch `main`
 
 2. **Configurações no Coolify:**
-   - **Tipo de Build**: Dockerfile
+   - **IMPORTANTE**: No painel do Coolify, vá em "Build Pack" e selecione **"Dockerfile"** (não deixe em "Auto" ou "Nixpacks")
    - **Porta**: 8501
    - **Comando de Build**: (deixe vazio, o Dockerfile já está configurado)
    - **Comando de Start**: (deixe vazio, o Dockerfile já está configurado)
+   
+   **⚠️ Se o Coolify usar Nixpacks automaticamente**, o Chrome não será instalado e o Selenium não funcionará. Certifique-se de selecionar "Dockerfile" explicitamente.
 
 3. **Variáveis de Ambiente (Opcional):**
    - `OPENAI_API_KEY`: Chave da API OpenAI (apenas se quiser usar funcionalidades de IA)

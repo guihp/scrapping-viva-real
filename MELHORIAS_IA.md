@@ -70,3 +70,4 @@ Isso mantém os custos baixos e garante melhor qualidade dos dados.
 - Todos os erros da IA são tratados graciosamente (fallback para métodos tradicionais)
 
 
+
