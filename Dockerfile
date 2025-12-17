@@ -57,8 +57,21 @@ ENV STREAMLIT_SERVER_PORT=8501
 ENV STREAMLIT_SERVER_ADDRESS=0.0.0.0
 ENV STREAMLIT_SERVER_HEADLESS=true
 ENV STREAMLIT_BROWSER_GATHER_USAGE_STATS=false
+ENV STREAMLIT_SERVER_ENABLE_CORS=false
+ENV STREAMLIT_SERVER_ENABLE_XSRF_PROTECTION=false
+
+# Criar arquivo de configuração do Streamlit para proxy reverso
+RUN mkdir -p /root/.streamlit && \
+    echo "[server]" > /root/.streamlit/config.toml && \
+    echo "port = 8501" >> /root/.streamlit/config.toml && \
+    echo "address = \"0.0.0.0\"" >> /root/.streamlit/config.toml && \
+    echo "headless = true" >> /root/.streamlit/config.toml && \
+    echo "enableCORS = false" >> /root/.streamlit/config.toml && \
+    echo "enableXsrfProtection = false" >> /root/.streamlit/config.toml && \
+    echo "[browser]" >> /root/.streamlit/config.toml && \
+    echo "gatherUsageStats = false" >> /root/.streamlit/config.toml
 
 # Comando para iniciar o Streamlit
-CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0", "--server.headless=true"]
+CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0", "--server.headless=true", "--server.enableCORS=false", "--server.enableXsrfProtection=false"]
 
 
