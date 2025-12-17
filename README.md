@@ -12,11 +12,42 @@ Scraper com interface web visual para extrair dados de imóveis do Viva Real.
 
 ## 🚀 Instalação
 
+### Instalação Local
+
 1. Instale as dependências:
 
 ```bash
 pip install -r requirements.txt
 ```
+
+### 🐳 Deploy no Coolify
+
+Este projeto está preparado para deploy no Coolify. Siga os passos:
+
+1. **Conecte o repositório no Coolify:**
+   - Acesse seu painel do Coolify
+   - Crie um novo recurso
+   - Selecione "GitHub" como fonte
+   - Conecte o repositório: `https://github.com/guihp/scrapping-viva-real.git`
+   - Selecione a branch `main`
+
+2. **Configurações no Coolify:**
+   - **Tipo de Build**: Dockerfile
+   - **Porta**: 8501
+   - **Comando de Build**: (deixe vazio, o Dockerfile já está configurado)
+   - **Comando de Start**: (deixe vazio, o Dockerfile já está configurado)
+
+3. **Variáveis de Ambiente (Opcional):**
+   - `OPENAI_API_KEY`: Chave da API OpenAI (apenas se quiser usar funcionalidades de IA)
+   - `STREAMLIT_SERVER_PORT`: Porta do Streamlit (padrão: 8501)
+   - `STREAMLIT_SERVER_ADDRESS`: Endereço do servidor (padrão: 0.0.0.0)
+
+4. **Deploy:**
+   - Clique em "Deploy" e aguarde o build
+   - O Coolify irá construir a imagem Docker automaticamente
+   - Após o build, a aplicação estará disponível na URL fornecida pelo Coolify
+
+**Nota:** O Dockerfile já está configurado com todas as dependências necessárias, incluindo Chrome para o Selenium.
 
 ## 💻 Como Usar
 
