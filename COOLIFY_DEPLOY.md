@@ -65,3 +65,4 @@ Verifique os logs no Coolify para ver o erro específico.
 
 Certifique-se de que a porta está configurada como `8501` no Coolify.
 
+

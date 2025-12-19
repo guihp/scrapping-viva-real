@@ -71,3 +71,4 @@ Isso mantém os custos baixos e garante melhor qualidade dos dados.
 
 
 
+

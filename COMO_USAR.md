@@ -36,3 +36,4 @@ Se quiser executar sem abrir o navegador (mais rápido), marque "Modo Headless" 
 
 
 
+

@@ -68,8 +68,19 @@ RUN mkdir -p /root/.streamlit && \
     echo "headless = true" >> /root/.streamlit/config.toml && \
     echo "enableCORS = false" >> /root/.streamlit/config.toml && \
     echo "enableXsrfProtection = false" >> /root/.streamlit/config.toml && \
+    echo "runOnSave = false" >> /root/.streamlit/config.toml && \
     echo "[browser]" >> /root/.streamlit/config.toml && \
-    echo "gatherUsageStats = false" >> /root/.streamlit/config.toml
+    echo "gatherUsageStats = false" >> /root/.streamlit/config.toml && \
+    echo "serverAddress = \"0.0.0.0\"" >> /root/.streamlit/config.toml && \
+    echo "serverPort = 8501" >> /root/.streamlit/config.toml
+
+# Criar script de healthcheck
+RUN echo '#!/bin/bash\ncurl -f http://localhost:8501/_stcore/health || exit 1' > /healthcheck.sh && \
+    chmod +x /healthcheck.sh
+
+# Healthcheck
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD curl -f http://localhost:8501/_stcore/health || exit 1
 
 # Comando para iniciar o Streamlit
 CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0", "--server.headless=true", "--server.enableCORS=false", "--server.enableXsrfProtection=false"]
